@@ -242,15 +242,6 @@ Após a demonstração, foi aplicado um questionário de feedback,no qual os par
 
 Essa etapa permitiu coletar percepções importantes do público-alvo e validar a proposta apresentada no TCC, mesmo sem a realização de testes completos de uso devido ao tempo disponível.
 
-## Estratégia
-Para compreender as reais necessidades do público-alvo, foi realizada uma entrevista com dois grupos distintos: consumidores que frequentam feiras locais e microempreendedores que participam como expositores. O objetivo dessa etapa foi levantar informações sobre dificuldades, expectativas e funcionalidades desejadas em uma aplicação que centralize dados de eventos e marcas.
-
-As entrevistas procuraram identificar os principais desafios enfrentados por cada grupo. Entre os microempreendedores, destacou-se a dificuldade em divulgar eventos e atrair novos clientes. Já os consumidores mencionaram a falta de um canal centralizado para acessar informações sobre feiras, horários e expositores. Esses dados foram essenciais para orientar a construção das funcionalidades do sistema.
-
-Após essa etapa, foi realizada a apresentação do MVP diretamente pelo computador, durante o momento de exposição do TCC. A demonstração permitiu apresentar visualmente as funcionalidades desenvolvidas e coletar feedback por meio de um questionário aplicado aos participantes. Essa avaliação complementou as entrevistas iniciais e ajudou a validar se o protótipo atendia às necessidades identificadas.
-
-Press enter or click to view image in full size
-
 
 ## Estratégia
 
