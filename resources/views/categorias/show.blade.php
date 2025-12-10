@@ -43,7 +43,7 @@
         <div class="row">
             @foreach ($bancas as $banca)
                 <a href="{{ route('bancas.show', $banca->slug) }}" class="col-md-2 click-item">
-                    <div class="img-wrapper">
+                    <div class="img-wrapper thumbnail">
                         <img src="{{ $banca->foto_url }}">
                         <p class="text-center">{{ $banca->nome_fantasia }}</p>
                     </div>
