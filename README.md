@@ -12,15 +12,19 @@ Diante desse contexto, o projeto propõe o desenvolvimento de uma aplicação we
 
 
 ## Definição do Problema
-Microempreendedores que participam de feiras em Porto Alegre enfrentam dificuldades na divulgação de seus eventos e no acesso do público às informações sobre datas, locais e expositores participantes. Para compreender melhor essa realidade, foi realizada uma pesquisa por meio de formulários com expositores e frequentadores das feiras da cidade.
-Os resultados indicaram que muitos frequentadores têm dificuldade em descobrir quando e onde as feiras acontecem, bem como em conhecer melhor os expositores e seus negócios, devido à inexistência de um espaço centralizado que reúna essas informações. Da mesma forma, os expositores relataram limitações na divulgação de seus produtos, promoções e bancas, além da dificuldade de acesso a informações organizadas sobre os eventos.
 
-Atualmente, não existe um aplicativo ou plataforma que centralize as informações sobre as feiras de microempreendedores locais, o que dificulta a divulgação dos eventos e o acesso do público interessado a esses dados, sem garantir que haja aumento de público, mas evidenciando a necessidade de uma solução que organize e concentre essas informações.
+Microempreendedores expositores das que participam de feiras em Porto Alegre enfrentam dificuldades para divulgar seus eventos e alcançar um público maior. Para compreender melhor essas dificuldades, foi realizada uma pesquisa, por meio de formulários, com expositores e frequentadores das feiras de Porto Alegre.
+
+Os resultados indicaram que muitos frequentadores das feiras não sabem quando e onde as feiras acontecem e relataram dificuldade em conhecer melhor os expositores e seus negócios , devido à falta de um espaço centralizado que reúna essas informações. Já os expositores que tem são microemprendedores apontaram não ter acesso adequado a informações sobre os locais dos eventos, além de identificarem falta de divulgação de seus produtos, promoções e bancas participantes .
+
+Atualmente, não existe um canal que concentre e organize essas informações, o que resulta em baixa visibilidade para os expositores e limita as oportunidades para consumidores interessados em conhecer novidades, apoiar pequenos empreendedores e fortalecer o comércio local.
+
 A seguir, são apresentadas as imagens referentes aos resultados obtidos na pesquisa realizada com microempreendedores e frequentadores das feiras, as quais contribuíram para a identificação das principais dificuldades e necessidades do público envolvido.
 
+Press enter or click to view image in full size
 
 ## Objetivo Geral
-Foi desenvolvida uma aplicação web responsiva que centraliza a divulgação de feiras , permitindo que organizadores publiquem seus eventos, expositores promovam seus negócios e consumidores tenham acesso a informações claras sobre quando e onde as feiras ocorrerão.
+Foi desenvolvida uma aplicação web responsiva que centraliza a divulgação de feiras , permitindo que organizadores publiquem seus eventos, expositores promovam seus negócios e consumidores tenham acesso a informações claras sobre quando e onde as feiras ocorrerão.
 
 ## Objetivos Específicos
 Com o intuito de atender às necessidades dos diferentes públicos envolvidos nas feiras, como expositores, organizadores de eventos e frequentadores, o sistema busca alcançar os seguintes objetivos específicos:
@@ -30,6 +34,12 @@ Com o intuito de atender às necessidades dos diferentes públicos envolvidos na
 * Centralizar informações essenciais do evento, como data, horário, descrição e endereço.
 * Melhorar a comunicação entre organizadores e expositores por meio de informações atualizadas e acessíveis.E para os clientes também para saber tudo sobre o evento.
 
+Permitir o cadastro de perfis completos das bancas participantes, contendo informações como nome da banca, descrição, instagram e formas de contato.
+Possibilitar o cadastro e a divulgação de produtos, promoções de cada banca.
+Permitir que o expositor selecione a categoria da sua banca, facilitando para que os frequentadores encontrem marcas de acordo com seus interesses.
+Possibilitar o cadastro de mais de uma banca, caso o expositor possua múltiplos negócios.
+Facilitar o acesso às informações sobre os eventos disponíveis, permitindo que o expositor visualize detalhes e decida se irá participar ou não do evento.
+Disponibilizar um espaço centralizado onde os consumidores possam conhecer melhor os expositores e os produtos oferecidos nas feiras.
 
 ## Para os Expositores (Microempreendedores):
 * Permitir o cadastro de perfis completos das bancas participantes, contendo informações como nome da banca, descrição, instagram e formas de contato.
@@ -40,35 +50,36 @@ Com o intuito de atender às necessidades dos diferentes públicos envolvidos na
 * Disponibilizar um espaço centralizado onde os consumidores possam conhecer melhor os expositores e os produtos oferecidos nas feiras.
 
 ## Para os Frequentadores das Feiras (Consumidores):
-* Permitir que os usuários encontrem informações atualizadas sobre as os eventos , incluindo data, horário, endereço e bancas participantes.
-* O sistema permite que os consumidores favoritem produtos e bancas de seu interesse . Sempre que um produto favoritado entrar em promoção, o usuário receberá uma notificação no próprio site, além de uma mensagem automática via e-mail O envio de e-mails na plataforma é realizado por meio do recurso nativo de mensageria do framework Laravel (Laravel Mail). O sistema utiliza o protocolo SMTP para comunicação com provedores de serviço de e-mail, sendo responsável pela composição das mensagens, geração do conteúdo HTML por meio de templates Blade e autenticação junto ao servidor de envio. Cada notificação possui uma classe dedicada do tipo Mailable, responsável por definir o assunto, o remetente e os dados repassados à visualização da mensagem. O envio é efetuado automaticamente após ações relevantes dos usuários, como inscrição, reagendamento ou cancelamento de eventos , Essa dupla forma de comunicação garante que o consumidor seja informado rapidamente sobre ofertas nos produtos de favoritados, aumentando o engajamento com a plataforma.
+* Permitir que os usuários encontrem informações atualizadas sobre as os eventos , incluindo data, horário, endereço e bancas participantes.
+* O sistema permite que os consumidores favoritem produtos e bancas de seu interesse .
+* Sempre que um produto favoritado entrar em promoção, o usuário receberá uma notificação no próprio site, além de uma mensagem automática via WhatsApp, enviada por meio da integração com a API da Twilio. Essa dupla forma de comunicação garante que o consumidor seja informado rapidamente sobre ofertas nos produtos de favoritados, aumentando o engajamento com a plataforma.
 * Permitir que o usuário manifeste que vai participar ou não do evento no dia do evento, para facilitar o planejamento de participação.
 * Disponibilizar filtros por categorias para facilitar a busca por bancas e produtos de interesse.
 
+
 ## Stack Tecnológico
+
 A solução proposta foi desenvolvida com o objetivo de atender às necessidades do público do Baita Feira, oferecendo uma aplicação moderna, responsiva e de fácil usabilidade, proporcionando uma navegação eficiente tanto para consumidores quanto para microempreendedores. O projeto prioriza a adoção de tecnologias estáveis, garantindo desempenho, segurança e confiabilidade na utilização do sistema.
+
 * HTML5 e CSS3: O HTML5 e o CSS3 constituem a base estrutural e visual da aplicação. Enquanto o HTML organiza os conteúdos da página, o CSS estiliza e garante um design moderno e responsivo. Essa escolha possibilita interfaces compatíveis com diferentes navegadores e dispositivos, fundamentais para alcançar um público variado.
 * Bootstrap: O Bootstrap foi incorporado para acelerar o desenvolvimento da interface e assegurar a responsividade. Sua biblioteca de componentes facilita a construção de layouts consistentes, proporcionando uma experiência fluida aos usuários, seja acessando a plataforma de um celular em uma feira ou de um computador em casa.
 * JavaScript: O JavaScript é essencial para trazer dinamismo à aplicação, tornando-a mais interativa e intuitiva. Ele é utilizado para validações, efeitos visuais e interações em tempo real, enriquecendo a experiência dos consumidores ao navegar pelas feiras e bancas cadastradas.
 * Laravel: O Laravel é o framework PHP escolhido para o back-end, estruturado no padrão MVC. Ele oferece ferramentas robustas, como autenticação, ORM Eloquent, migrations e sistema de rotas, garantindo segurança, escalabilidade e facilidade na manutenção do projeto. Essa escolha contribui diretamente para a confiabilidade da aplicação como canal oficial de divulgação dos eventos.
 * MySQL: O MySQL é o banco de dados relacional utilizado para o armazenamento das informações de usuários, eventos e produtos. Sua integração nativa com o Laravel, aliada à confiabilidade e desempenho, torna-o adequado para garantir consistência e eficiência no gerenciamento dos dados do sistema.
 * GitHub para Versionamento: O GitHub foi utilizado para versionamento do código-fonte, possibilitando colaboração, rastreamento de alterações e adoção de boas práticas de desenvolvimento. Essa ferramenta é essencial para manter organização e transparência ao longo da evolução do sistema.
-  
 Para a disponibilização da plataforma online, foi utilizada a hospedagem da HostGator para o registro do domínio do site. O domínio originalmente desejado, baitafeira, já se encontrava em uso, sendo necessária a escolha de uma variação disponível para viabilizar a publicação do projeto na internet.
-Hostinger para Hospedagem: A aplicação será hospedada na Hostinger, que oferece suporte completo para PHP/Laravel e bancos de dados MySQL. Essa escolha garante um ambiente moderno, rápido e com excelente custo-benefício, atendendo às necessidades do Baita Feira com estabilidade e desempenho.
-
+* Hostinger para Hospedagem: A aplicação será hospedada na Hostinger, que oferece suporte completo para PHP/Laravel e bancos de dados MySQL. Essa escolha garante um ambiente moderno, rápido e com excelente custo-benefício, atendendo às necessidades do Baita Feira com estabilidade e desempenho.
 Além das tecnologias mencionadas, a plataforma integra APIs externas, como o ViaCEP, utilizada para a obtenção automática de dados de endereço a partir do CEP informado, e a API do WhatsApp (Twilio), empregada para a automação do envio de mensagens de divulgação de eventos organizados pelo organizador, promoções e notificações aos usuários clientes. Essas integrações facilitam o cadastro de eventos, ampliam a divulgação e aprimoram a comunicação entre organizadores, expositores e clientes.
-Além das tecnologias principais utilizadas na plataforma, o Baita Feira integra diversas APIs externas para automatizar processos e aprimorar a experiência dos usuários. A API ViaCEP é utilizada para o preenchimento automático dos dados de endereço durante o cadastro dos eventos. Ao informar o CEP no formulário, o sistema realiza uma requisição à API, que retorna os dados em formato JSON, como rua, bairro, cidade e estado, preenchendo os campos automaticamente na interface sem a necessidade de recarregar a página, reduzindo erros de digitação e agilizando o cadastro.
-Além das tecnologias principais utilizadas na plataforma, o Baita Feira integra diversas APIs externas com o objetivo de automatizar processos e aprimorar a experiência dos usuários. A API ViaCEP é utilizada para o preenchimento automático dos dados de endereço durante o cadastro dos eventos. Ao informar o CEP no formulário, o sistema realiza uma requisição à API, que retorna os dados em formato JSON, como rua, bairro, cidade e estado, preenchendo os campos automaticamente na interface sem a necessidade de recarregar a página, reduzindo erros de digitação e agilizando o processo de cadastro.
-Após a confirmação, os dados são armazenados pelo backend desenvolvido em Laravel (PHP) no banco de dados MySQL. Para viabilizar a exibição de mapas, o sistema utiliza a biblioteca Leaflet integrada ao OpenStreetMap, serviço cartográfico gratuito que não exige chave de API. O endereço cadastrado é convertido em coordenadas geográficas (latitude e longitude) por meio da API Nominatim, processo executado pelo serviço interno GeoLocalizacaoService, responsável por enviar a requisição, receber os dados em formato JSON e gravar as coordenadas no banco de dados associadas ao evento. Essas coordenadas permitem que os locais sejam exibidos corretamente no mapa com marcadores interativos.
-Além disso, o sistema utiliza a API de Geolocalização do navegador para obter a posição do usuário e aplica a fórmula de Haversine diretamente nas consultas SQL para calcular a distância entre o usuário e cada evento, considerando a curvatura da Terra. Com esse cálculo, os eventos são ordenados automaticamente por proximidade, permitindo que o usuário visualize inicialmente as feiras mais próximas de sua localização.
-No planejamento inicial do projeto, também foi considerada a integração com a API do WhatsApp (Twilio) para envio automático de notificações, divulgações e promoções aos usuários. Entretanto, devido às limitações relacionadas a custos e à dependência de serviços pagos, essa funcionalidade não foi implementada na versão final do sistema, permanecendo como uma possibilidade de desenvolvimento futuro.
 
+Além das tecnologias principais utilizadas na plataforma, o Baita Feira integra diversas APIs externas para automatizar processos e aprimorar a experiência dos usuários. A API ViaCEP é utilizada para o preenchimento automático dos dados de endereço durante o cadastro dos eventos. Ao informar o CEP no formulário, o sistema realiza uma requisição à API, que retorna os dados em formato JSON, como rua, bairro, cidade e estado, preenchendo os campos automaticamente na interface sem a necessidade de recarregar a página, reduzindo erros de digitação e agilizando o cadastro.
+
+Após a confirmação, os dados são armazenados pelo backend desenvolvido em Laravel (PHP) no banco de dados MySQL. Para viabilizar a exibição de mapas, o sistema utiliza a biblioteca Leaflet integrada ao OpenStreetMap, serviço cartográfico gratuito que não exige chave de API. O endereço cadastrado é convertido em coordenadas geográficas (latitude e longitude) por meio da API Nominatim, processo executado pelo serviço interno GeoLocalizacaoService, que envia a requisição, recebe os dados em formato JSON e grava as coordenadas no banco de dados associadas ao evento. Essas coordenadas permitem que os locais sejam exibidos corretamente no mapa com marcadores interativos. Além disso, o sistema utiliza a API de Geolocalização do navegador para obter a posição do usuário e aplica a fórmula de Haversine diretamente nas consultas SQL para calcular a distância entre o usuário e cada evento considerando a curvatura da Terra. Com esse cálculo, os eventos são ordenados automaticamente por proximidade, possibilitando que o usuário visualize primeiro as feiras mais próximas de sua localização.
+
+A plataforma também integra a API do WhatsApp (Twilio) para automatizar o envio de notificações, promoções e divulgações de eventos aos usuários, fortalecendo a comunicação entre organizadores, expositores e clientes.
 
 Tecnologia utilizadas no Baita Feira, abaixo:
 
-
-![Texto alternativo](./resources/imagem)
+![Texto alternativo](./resources/imagens/tecnologiabaitafeira.jpg)
 
 ## Descrição da Solução
 
@@ -78,7 +89,7 @@ Diagrama de Fluxo Arquitetural, abaixo:
 O Baita Feira consiste em uma plataforma web desenvolvida em Laravel (PHP), com interface responsiva construída em HTML, CSS, Bootstrap e JavaScript, utilizando MySQL como banco de dados e hospedagem na Hostinguer.
 Para os recursos de localização, o sistema utiliza o Leaflet integrado ao OpenStreetMap (OSM), permitindo exibir mapas e marcar o local dos eventos de forma totalmente gratuita. A latitude e longitude são processadas pelo próprio Leaflet, enquanto o preenchimento automático do endereço do organizador é obtido por meio da API gratuita ViaCEP, que retorna informações completas a partir do CEP informado.
 Além disso, o sistema conta com ferramentas internas para organização de eventos, gerenciamento de bancas, controle de participantes e divulgação das feiras, tornando o processo mais ágil e acessível para organizadores, expositores e consumidores. A plataforma tem como finalidade centralizar informações sobre feiras , conectando microempreendedores e o público interessado em novidades locais.
-![Texto alternativo](./resources/imagem/diagramadefluxobaitafeira.jpg)
+![Texto alternativo](./resources/imagens/diagramadefluxo.jpg)
 
 ## Para Expositores
 A plataforma disponibiliza recursos para que os expositores possam:
@@ -176,57 +187,28 @@ Nenhuma mostra claramente os expositores confirmados para cada evento, limitando
   
 ![Texto alternativo](./resources/imagens/diagramadecasodeuso.jpg)
 
-* Elevator pitch
-
-Elevator pitch
-PARA microempreendedores que participam de feiras, organizadores de eventos e consumidores interessados em novidades locais,
-
-QUE TÊM empreendedores que precisam de mais visibilidade, organizadores que desejam divulgar feiras de forma centralizada e consumidores que buscam um único lugar para descobrir eventos e promoções,
-
-O BAITA FEIRA
-
-É UMA plataforma digital para divulgação de eventos e bancas de microempreendedores em feiras do sul do Brasil,
-
-QUE facilita a conexão entre expositores, organizadores e consumidores, além de simplificar a divulgação dos eventos e o acesso às informações de cada banca,
-
-AO CONTRÁRIO DE sites da Prefeitura, Sympla, redes sociais e plataformas genéricas, que não são voltadas exclusivamente para pequenos negócios locais e não concentram todos os participantes de feiras em um único ambiente,
-
-O NOSSO PRODUTO é uma plataforma online que centraliza eventos, bancas e dados dos expositores, servindo como ponto inicial para a descoberta, divulgação e acompanhamento das feiras.
-
 ## Protótipos
-Protótipos da Aplicação (Figma)
-Para a criação dos protótipos da aplicação, foi utilizado o Figma, ferramenta que permite desenvolver interfaces de alta fidelidade de forma interativa, visual e intuitiva.
-
-Funcionalidades para Clientes
+## Funcionalidades para Clientes
 Nos protótipos voltados aos consumidores, foram destacadas funcionalidades que aumentam a praticidade no uso da plataforma e facilitam o engajamento com os expositores:
 
-Favoritar bancas: permite que o usuário acompanhe bancas de interesse e receba informações sobre evento daquela feira caso não tenha participado e ao favoritar um produto ele
-Visualização de eventos: possibilita saber quando e onde ocorrerão os eventos das marcas favoritas, possibilitar o cadastro e a divulgação de produtos, promoções de cada banca.
-Press enter or click to view image in full size
-
-## Funcionalidades para Clientes
+* Favoritar bancas: permite que o usuário acompanhe bancas de interesse e receba informações sobre evento daquela feira caso não tenha participado e ao favoritar um produto ele
+* Visualização de eventos: possibilita saber quando e onde ocorrerão os eventos das marcas favoritas, possibilitar o cadastro e a divulgação de produtos, promoções de cada banca.
 
 ![Texto alternativo](./resources/imagens/telafigmacliente.jpg)
 
-Nos protótipos voltados aos consumidores, foram destacadas funcionalidades que aumentam a praticidade no uso da plataforma e facilitam o engajamento com os expositores:
-
-Favoritar bancas: permite que o usuário acompanhe bancas de interesse e receba informações sobre evento daquela feira caso não tenha participado e ao favoritar um produto ele
-Visualização de eventos: possibilita saber quando e onde ocorrerão os eventos das marcas favoritas, possibilitar o cadastro e a divulgação de produtos, promoções de cada banca.
-
-## Funcionalidades para Organizadores
 Nos protótipos destinados aos organizadores de feiras, foram destacadas funcionalidades que facilitam a criação e divulgação dos eventos:
 
-Criação e edição de feiras: o organizador pode cadastrar novos eventos, informando nome da feira, descrição, datas, horários e endereço, com integração às APIs de localização para geolocalização automático.
-Atualização de informações: permite editar conteúdos já cadastrados, como textos, imagens e demais dados relacionados à feira.
-Divulgação dos eventos: possibilita manter a página do evento sempre atualizada, facilitando o acesso dos consumidores a informações completas e confiáveis.
-Notificações: envio automatizado de avisos aos usuários sobre novas feiras, alterações de data ou local e comunicados gerais por meio do sistema de notificações .
+* Criação e edição de feiras: o organizador pode cadastrar novos eventos, informando nome da feira, descrição, datas, horários e endereço, com integração às APIs de localização para geolocalização automático.
+* Atualização de informações: permite editar conteúdos já cadastrados, como textos, imagens e demais dados relacionados à feira.
+* Divulgação dos eventos: possibilita manter a página do evento sempre atualizada, facilitando o acesso dos consumidores a informações completas e confiáveis.
+* Notificações: envio automatizado de avisos aos usuários sobre novas feiras, alterações de data ou local e comunicados gerais por meio do sistema de notificações e integração com o WhatsApp (Twilio).
 
 ![Texto alternativo](./resources/imagens/figmaorganizadordoevento.jpg)
-## Funcionalidades para Expositor
+
 Foram incluídas funcionalidades que apoiam o gerenciamento das atividades dos expositores nas feiras:
 
-Gestão de produtos: possibilita editar informações e imagens dos produtos, mantendo o catálogo sempre atualizado e atrativo para os clientes.
-Edição de informações da banca/marca: possibilita atualizar descrição, logo e demais informações relevantes, reforçando a identidade da marca dentro da plataforma.
+* Gestão de produtos: possibilita editar informações e imagens dos produtos, mantendo o catálogo sempre atualizado e atrativo para os clientes.
+* Edição de informações da banca/marca: possibilita atualizar descrição, logo e demais informações relevantes, reforçando a identidade da marca dentro da plataforma.
 
 ![Texto alternativo](./resources/imagens/prototipofigmaexporsitor.jpg)
 
@@ -235,7 +217,7 @@ Edição de informações da banca/marca: possibilita atualizar descrição, log
 
 A validação do sistema foi realizada de forma demonstrativa, com o objetivo de apresentar o funcionamento da plataforma para fins de avaliação no TCC. Primeiro, foram feitos testes funcionais internos para garantir que as principais funcionalidades estivessem operando corretamente, como cadastro de usuários, criação de eventos e navegação pelas telas.
 
-Em seguida, o sistema foi apresentado pessoalmente,, por meio de um computador, para expositores e consumidores convidados. Durante a apresentação, foram demonstradas as telas, os fluxos principais e as funcionalidades da plataforma, permitindo que os participantes compreendessem como o sistema funciona na prática.
+Em seguida, o sistema foi apresentado pessoalmente, por meio de um computador, para expositores e consumidores convidados. Durante a apresentação, foram demonstradas as telas, os fluxos principais e as funcionalidades da plataforma, permitindo que os participantes compreendessem como o sistema funciona na prática.
 
 Após a demonstração, foi aplicado um questionário de feedback,no qual os participantes puderam avaliar a clareza da interface, a utilidade das funcionalidades e sugerir melhorias.
 
@@ -252,22 +234,14 @@ Após essa etapa, foi realizada a apresentação do MVP diretamente pelo computa
 
 
 ## Consolidação dos Dados Coletados-Entrevistas
-As entrevistas realizadas com o público-alvo expositores e clientes que frequentam feiras em Porto Alegre permitiram identificar suas principais necessidades e dificuldades. Por meio dessa pesquisa, tornou-se evidente a falta de um canal centralizado para divulgar eventos, produtos e informações das feiras.
+Após a apresentação e demonstração do Baita Feira App em funcionamento na versão on-line da plataforma, foram aplicadas pesquisas com os dois principais públicos envolvidos no sistema: frequentadores das feiras e expositores. Os resultados indicaram alta aceitação da proposta, demonstrando que a plataforma atende às necessidades de ambos os perfis. Entre os frequentadores, destacaram-se o interesse em utilizar o aplicativo para acompanhar informações completas sobre eventos, como data, horário e localização, além de conhecer bancas e produtos, favoritar expositores e receber notificações. Já entre os expositores, o aplicativo foi reconhecido como uma ferramenta eficiente para a divulgação de eventos e produtos, ampliando a visibilidade das bancas e facilitando a aproximação com o público consumidor.
 
-Os participantes também apontaram funcionalidades desejadas para o Baita Feira, como receber notificações sobre novas feiras, visualizar datas atualizadas dos eventos, acessar promoções dos expositores e encontrar facilmente as feiras que estão acontecendo no momento ou que ocorrerão em breve. Essas informações foram essenciais para direcionar o desenvolvimento da plataforma, garantindo que as funcionalidades criadas atendessem às expectativas e demandas reais dos usuários.
+A partir das respostas coletadas, foram identificadas sugestões de melhorias que refletem expectativas comuns aos dois públicos. Entre elas, destaca-se a implantação de um sistema de reserva de produtos, permitindo que os clientes garantam antecipadamente a aquisição dos itens para retirada no dia da feira. Também foi sugerido o desenvolvimento de um canal de comunicação direta (chat) entre expositores e consumidores, facilitando o atendimento e o esclarecimento de dúvidas em tempo real. Outras propostas incluem a ampliação dos meios de notificação, como e-mail e SMS, além do WhatsApp já utilizado, a implementação de um sistema de curtidas e avaliações públicas para bancas e produtos, o destaque visual para os produtos mais favoritado pelos usúarios,bem como a possibilidade de compartilhamento de imagens e experiências dos clientes com produtos adquiridos nas feiras. De modo geral, as pesquisas confirmam que o Baita Feira App cumpre seu objetivo de centralizar informações, conectar expositores e consumidores e contribuir para o fortalecimento do comércio local, além de fornecer diretrizes claras para a evolução contínua da plataforma de acordo com as demandas identificadas.
 
-Posteriormente, foi realizada uma nova apresentação do aplicativo, na qual o protótipo foi demonstrado para expositores e clientes, a fim de coletar opiniões sobre o funcionamento, clareza das telas e possíveis melhorias. Esse momento permitiu validar as escolhas do projeto e identificar sugestões importantes para aprimoramentos futuros.
-Após a apresentação e demonstração do Baita Feira App em sua versão on-line, foram aplicadas pesquisas com os dois principais públicos envolvidos no sistema: frequentadores das feiras e expositores. Os resultados obtidos indicaram alta aceitação da proposta, evidenciando que a plataforma atende de forma satisfatória às necessidades de ambos os perfis.
+## Conclusões
+Após a apresentação e demonstração do Baita Feira App em funcionamento na versão on-line da plataforma, foram aplicadas pesquisas com os dois principais públicos envolvidos no sistema: frequentadores das feiras e expositores. Os resultados indicaram alta aceitação da proposta, demonstrando que a plataforma atende às necessidades de ambos os perfis. Entre os frequentadores, destacaram-se o interesse em utilizar o aplicativo para acompanhar informações completas sobre eventos, como data, horário e localização, além de conhecer bancas e produtos, favoritar expositores e receber notificações. Já entre os expositores, o aplicativo foi reconhecido como uma ferramenta eficiente para a divulgação de eventos e produtos, ampliando a visibilidade das bancas e facilitando a aproximação com o público consumidor.
 
-Entre os frequentadores, destacou-se o interesse no uso do aplicativo para acompanhamento completo das informações dos eventos, como data, horário e localização, bem como para a visualização das bancas participantes e de seus produtos, a possibilidade de favoritar expositores e o recebimento de notificações. Já entre os expositores, a plataforma foi reconhecida como uma ferramenta eficiente de divulgação de eventos e produtos, contribuindo para ampliar a visibilidade das bancas e fortalecer a aproximação com o público consumidor.
-
-A partir das respostas coletadas, foram identificadas sugestões de melhorias que refletem expectativas comuns aos dois grupos pesquisados. Dentre elas, destaca-se a possível implantação de um sistema de reserva de produtos, permitindo que os clientes garantam antecipadamente a aquisição de itens para retirada no dia da feira. Também foi sugerido o desenvolvimento de um canal de comunicação direta (chat) entre expositores e consumidores, com o objetivo de facilitar o atendimento e o esclarecimento de dúvidas em tempo real.
-
-Outras propostas incluem a ampliação dos meios de notificação, como e-mail e SMS, além da possível integração futura com serviços de mensageria instantânea, a implementação de um sistema de curtidas e avaliações públicas para bancas e produtos, o destaque visual para os itens mais favoritados pelos usuários, bem como a possibilidade de compartilhamento de imagens e experiências relacionadas aos produtos adquiridos nas feiras.
-
-De modo geral, os resultados confirmam que o Baita Feira App cumpre seu objetivo principal de centralizar informações, conectar expositores e consumidores e fomentar o fortalecimento do comércio local, além de oferecer uma base sólida para a evolução contínua da plataforma conforme as demandas e sugestões identificadas durante o processo de avaliação do sistema.
-
-
+A partir das respostas coletadas, foram identificadas sugestões de melhorias que refletem expectativas comuns aos dois públicos. Entre elas, destaca-se a implantação de um sistema de reserva de produtos, permitindo que os clientes garantam antecipadamente a aquisição dos itens para retirada no dia da feira. Também foi sugerido o desenvolvimento de um canal de comunicação direta (chat) entre expositores e consumidores, facilitando o atendimento e o esclarecimento de dúvidas em tempo real. Outras propostas incluem a ampliação dos meios de notificação, como e-mail e SMS, além do WhatsApp já utilizado, a implementação de um sistema de curtidas e avaliações públicas para bancas e produtos, o destaque visual para os produtos mais favoritado pelos usúarios,bem como a possibilidade de compartilhamento de imagens e experiências dos clientes com produtos adquiridos nas feiras. De modo geral, as pesquisas confirmam que o Baita Feira App cumpre seu objetivo de centralizar informações, conectar expositores e consumidores e contribuir para o fortalecimento do comércio local, além de fornecer diretrizes claras para a evolução contínua da plataforma de acordo com as demandas identificadas.
 
 
 
