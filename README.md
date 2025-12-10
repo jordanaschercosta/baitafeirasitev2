@@ -177,28 +177,57 @@ Nenhuma mostra claramente os expositores confirmados para cada evento, limitando
   
 ![Texto alternativo](./resources/imagens/diagramadecasodeuso.jpg)
 
+* Elevator pitch
+
+Elevator pitch
+PARA microempreendedores que participam de feiras, organizadores de eventos e consumidores interessados em novidades locais,
+
+QUE TÊM empreendedores que precisam de mais visibilidade, organizadores que desejam divulgar feiras de forma centralizada e consumidores que buscam um único lugar para descobrir eventos e promoções,
+
+O BAITA FEIRA
+
+É UMA plataforma digital para divulgação de eventos e bancas de microempreendedores em feiras do sul do Brasil,
+
+QUE facilita a conexão entre expositores, organizadores e consumidores, além de simplificar a divulgação dos eventos e o acesso às informações de cada banca,
+
+AO CONTRÁRIO DE sites da Prefeitura, Sympla, redes sociais e plataformas genéricas, que não são voltadas exclusivamente para pequenos negócios locais e não concentram todos os participantes de feiras em um único ambiente,
+
+O NOSSO PRODUTO é uma plataforma online que centraliza eventos, bancas e dados dos expositores, servindo como ponto inicial para a descoberta, divulgação e acompanhamento das feiras.
+
 ## Protótipos
-## Funcionalidades para Clientes
+Protótipos da Aplicação (Figma)
+Para a criação dos protótipos da aplicação, foi utilizado o Figma, ferramenta que permite desenvolver interfaces de alta fidelidade de forma interativa, visual e intuitiva.
+
+Funcionalidades para Clientes
 Nos protótipos voltados aos consumidores, foram destacadas funcionalidades que aumentam a praticidade no uso da plataforma e facilitam o engajamento com os expositores:
 
-* Favoritar bancas: permite que o usuário acompanhe bancas de interesse e receba informações sobre evento daquela feira caso não tenha participado e ao favoritar um produto ele
-* Visualização de eventos: possibilita saber quando e onde ocorrerão os eventos das marcas favoritas, possibilitar o cadastro e a divulgação de produtos, promoções de cada banca.
+Favoritar bancas: permite que o usuário acompanhe bancas de interesse e receba informações sobre evento daquela feira caso não tenha participado e ao favoritar um produto ele
+Visualização de eventos: possibilita saber quando e onde ocorrerão os eventos das marcas favoritas, possibilitar o cadastro e a divulgação de produtos, promoções de cada banca.
+Press enter or click to view image in full size
+
+## Funcionalidades para Clientes
 
 ![Texto alternativo](./resources/imagens/telafigmacliente.jpg)
 
+Nos protótipos voltados aos consumidores, foram destacadas funcionalidades que aumentam a praticidade no uso da plataforma e facilitam o engajamento com os expositores:
+
+Favoritar bancas: permite que o usuário acompanhe bancas de interesse e receba informações sobre evento daquela feira caso não tenha participado e ao favoritar um produto ele
+Visualização de eventos: possibilita saber quando e onde ocorrerão os eventos das marcas favoritas, possibilitar o cadastro e a divulgação de produtos, promoções de cada banca.
+
+## Funcionalidades para Organizadores
 Nos protótipos destinados aos organizadores de feiras, foram destacadas funcionalidades que facilitam a criação e divulgação dos eventos:
 
-* Criação e edição de feiras: o organizador pode cadastrar novos eventos, informando nome da feira, descrição, datas, horários e endereço, com integração às APIs de localização para geolocalização automático.
-* Atualização de informações: permite editar conteúdos já cadastrados, como textos, imagens e demais dados relacionados à feira.
-* Divulgação dos eventos: possibilita manter a página do evento sempre atualizada, facilitando o acesso dos consumidores a informações completas e confiáveis.
-* Notificações: envio automatizado de avisos aos usuários sobre novas feiras, alterações de data ou local e comunicados gerais por meio do sistema de notificações e integração com o WhatsApp (Twilio).
+Criação e edição de feiras: o organizador pode cadastrar novos eventos, informando nome da feira, descrição, datas, horários e endereço, com integração às APIs de localização para geolocalização automático.
+Atualização de informações: permite editar conteúdos já cadastrados, como textos, imagens e demais dados relacionados à feira.
+Divulgação dos eventos: possibilita manter a página do evento sempre atualizada, facilitando o acesso dos consumidores a informações completas e confiáveis.
+Notificações: envio automatizado de avisos aos usuários sobre novas feiras, alterações de data ou local e comunicados gerais por meio do sistema de notificações .
 
 ![Texto alternativo](./resources/imagens/figmaorganizadordoevento.jpg)
-
+## Funcionalidades para Expositor
 Foram incluídas funcionalidades que apoiam o gerenciamento das atividades dos expositores nas feiras:
 
-* Gestão de produtos: possibilita editar informações e imagens dos produtos, mantendo o catálogo sempre atualizado e atrativo para os clientes.
-* Edição de informações da banca/marca: possibilita atualizar descrição, logo e demais informações relevantes, reforçando a identidade da marca dentro da plataforma.
+Gestão de produtos: possibilita editar informações e imagens dos produtos, mantendo o catálogo sempre atualizado e atrativo para os clientes.
+Edição de informações da banca/marca: possibilita atualizar descrição, logo e demais informações relevantes, reforçando a identidade da marca dentro da plataforma.
 
 ![Texto alternativo](./resources/imagens/prototipofigmaexporsitor.jpg)
 
