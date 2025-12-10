@@ -20,8 +20,11 @@ Os resultados indicaram que muitos frequentadores das feiras não sabem quando e
 Atualmente, não existe um canal que concentre e organize essas informações, o que resulta em baixa visibilidade para os expositores e limita as oportunidades para consumidores interessados em conhecer novidades, apoiar pequenos empreendedores e fortalecer o comércio local.
 
 A seguir, são apresentadas as imagens referentes aos resultados obtidos na pesquisa realizada com microempreendedores e frequentadores das feiras, as quais contribuíram para a identificação das principais dificuldades e necessidades do público envolvido.
+  
+![Texto alternativo](./resources/imagens/entrevistaparte1.jpg)
+  
+![Texto alternativo](./resources/imagens/entrevista1parte2.jpg)
 
-Press enter or click to view image in full size
 
 ## Objetivo Geral
 Foi desenvolvida uma aplicação web responsiva que centraliza a divulgação de feiras , permitindo que organizadores publiquem seus eventos, expositores promovam seus negócios e consumidores tenham acesso a informações claras sobre quando e onde as feiras ocorrerão.
