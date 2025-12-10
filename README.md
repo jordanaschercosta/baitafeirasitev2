@@ -12,19 +12,16 @@ Diante desse contexto, o projeto propõe o desenvolvimento de uma aplicação we
 
 
 ## Definição do Problema
+Microempreendedores que participam de feiras em Porto Alegre enfrentam dificuldades na divulgação de seus eventos e no acesso do público às informações sobre datas, locais e expositores participantes. Para compreender melhor essa realidade, foi realizada uma pesquisa por meio de formulários com expositores e frequentadores das feiras da cidade.
+Os resultados indicaram que muitos frequentadores têm dificuldade em descobrir quando e onde as feiras acontecem, bem como em conhecer melhor os expositores e seus negócios, devido à inexistência de um espaço centralizado que reúna essas informações. Da mesma forma, os expositores relataram limitações na divulgação de seus produtos, promoções e bancas, além da dificuldade de acesso a informações organizadas sobre os eventos.
 
-Microempreendedores expositores das que participam de feiras em Porto Alegre enfrentam dificuldades para divulgar seus eventos e alcançar um público maior. Para compreender melhor essas dificuldades, foi realizada uma pesquisa, por meio de formulários, com expositores e frequentadores das feiras de Porto Alegre.
-
-Os resultados indicaram que muitos frequentadores das feiras não sabem quando e onde as feiras acontecem e relataram dificuldade em conhecer melhor os expositores e seus negócios , devido à falta de um espaço centralizado que reúna essas informações. Já os expositores que tem são microemprendedores apontaram não ter acesso adequado a informações sobre os locais dos eventos, além de identificarem falta de divulgação de seus produtos, promoções e bancas participantes .
-
-Atualmente, não existe um canal que concentre e organize essas informações, o que resulta em baixa visibilidade para os expositores e limita as oportunidades para consumidores interessados em conhecer novidades, apoiar pequenos empreendedores e fortalecer o comércio local.
-
+Atualmente, não existe um aplicativo ou plataforma que centralize as informações sobre as feiras de microempreendedores locais, o que dificulta a divulgação dos eventos e o acesso do público interessado a esses dados, sem garantir que haja aumento de público, mas evidenciando a necessidade de uma solução que organize e concentre essas informações.
 A seguir, são apresentadas as imagens referentes aos resultados obtidos na pesquisa realizada com microempreendedores e frequentadores das feiras, as quais contribuíram para a identificação das principais dificuldades e necessidades do público envolvido.
 
 Press enter or click to view image in full size
 
 ## Objetivo Geral
-Foi desenvolvida uma aplicação web responsiva que centraliza a divulgação de feiras , permitindo que organizadores publiquem seus eventos, expositores promovam seus negócios e consumidores tenham acesso a informações claras sobre quando e onde as feiras ocorrerão.
+Foi desenvolvida uma aplicação web responsiva que centraliza a divulgação de feiras , permitindo que organizadores publiquem seus eventos, expositores promovam seus negócios e consumidores tenham acesso a informações claras sobre quando e onde as feiras ocorrerão.
 
 ## Objetivos Específicos
 Com o intuito de atender às necessidades dos diferentes públicos envolvidos nas feiras, como expositores, organizadores de eventos e frequentadores, o sistema busca alcançar os seguintes objetivos específicos:
@@ -34,12 +31,7 @@ Com o intuito de atender às necessidades dos diferentes públicos envolvidos na
 * Centralizar informações essenciais do evento, como data, horário, descrição e endereço.
 * Melhorar a comunicação entre organizadores e expositores por meio de informações atualizadas e acessíveis.E para os clientes também para saber tudo sobre o evento.
 
-Permitir o cadastro de perfis completos das bancas participantes, contendo informações como nome da banca, descrição, instagram e formas de contato.
-Possibilitar o cadastro e a divulgação de produtos, promoções de cada banca.
-Permitir que o expositor selecione a categoria da sua banca, facilitando para que os frequentadores encontrem marcas de acordo com seus interesses.
-Possibilitar o cadastro de mais de uma banca, caso o expositor possua múltiplos negócios.
-Facilitar o acesso às informações sobre os eventos disponíveis, permitindo que o expositor visualize detalhes e decida se irá participar ou não do evento.
-Disponibilizar um espaço centralizado onde os consumidores possam conhecer melhor os expositores e os produtos oferecidos nas feiras.
+
 ## Para os Expositores (Microempreendedores):
 * Permitir o cadastro de perfis completos das bancas participantes, contendo informações como nome da banca, descrição, instagram e formas de contato.
 * Possibilitar o cadastro e a divulgação de produtos, promoções de cada banca.
@@ -49,32 +41,30 @@ Disponibilizar um espaço centralizado onde os consumidores possam conhecer melh
 * Disponibilizar um espaço centralizado onde os consumidores possam conhecer melhor os expositores e os produtos oferecidos nas feiras.
 
 ## Para os Frequentadores das Feiras (Consumidores):
-* Permitir que os usuários encontrem informações atualizadas sobre as os eventos , incluindo data, horário, endereço e bancas participantes.
-* O sistema permite que os consumidores favoritem produtos e bancas de seu interesse .
-* Sempre que um produto favoritado entrar em promoção, o usuário receberá uma notificação no próprio site, além de uma mensagem automática via WhatsApp, enviada por meio da integração com a API da Twilio. Essa dupla forma de comunicação garante que o consumidor seja informado rapidamente sobre ofertas nos produtos de favoritados, aumentando o engajamento com a plataforma.
-* Permitir que o usuário manifeste que vai participar ou não do evento no dia do evento, para facilitar o planejamento de participação.
-* Disponibilizar filtros por categorias para facilitar a busca por bancas e produtos de interesse.
-
+* Permitir que os usuários encontrem informações atualizadas sobre as os eventos , incluindo data, horário, endereço e bancas participantes.
+* O sistema permite que os consumidores favoritem produtos e bancas de seu interesse . Sempre que um produto favoritado entrar em promoção, o usuário receberá uma notificação no próprio site, além de uma mensagem automática via e-mail O envio de e-mails na plataforma é realizado por meio do recurso nativo de mensageria do framework Laravel (Laravel Mail). O sistema utiliza o protocolo SMTP para comunicação com provedores de serviço de e-mail, sendo responsável pela composição das mensagens, geração do conteúdo HTML por meio de templates Blade e autenticação junto ao servidor de envio. Cada notificação possui uma classe dedicada do tipo Mailable, responsável por definir o assunto, o remetente e os dados repassados à visualização da mensagem. O envio é efetuado automaticamente após ações relevantes dos usuários, como inscrição, reagendamento ou cancelamento de eventos , Essa dupla forma de comunicação garante que o consumidor seja informado rapidamente sobre ofertas nos produtos de favoritados, aumentando o engajamento com a plataforma.
+*Permitir que o usuário manifeste que vai participar ou não do evento no dia do evento, para facilitar o planejamento de participação.
+*Disponibilizar filtros por categorias para facilitar a busca por bancas e produtos de interesse.
 
 ## Stack Tecnológico
-
 A solução proposta foi desenvolvida com o objetivo de atender às necessidades do público do Baita Feira, oferecendo uma aplicação moderna, responsiva e de fácil usabilidade, proporcionando uma navegação eficiente tanto para consumidores quanto para microempreendedores. O projeto prioriza a adoção de tecnologias estáveis, garantindo desempenho, segurança e confiabilidade na utilização do sistema.
-
 * HTML5 e CSS3: O HTML5 e o CSS3 constituem a base estrutural e visual da aplicação. Enquanto o HTML organiza os conteúdos da página, o CSS estiliza e garante um design moderno e responsivo. Essa escolha possibilita interfaces compatíveis com diferentes navegadores e dispositivos, fundamentais para alcançar um público variado.
 * Bootstrap: O Bootstrap foi incorporado para acelerar o desenvolvimento da interface e assegurar a responsividade. Sua biblioteca de componentes facilita a construção de layouts consistentes, proporcionando uma experiência fluida aos usuários, seja acessando a plataforma de um celular em uma feira ou de um computador em casa.
 * JavaScript: O JavaScript é essencial para trazer dinamismo à aplicação, tornando-a mais interativa e intuitiva. Ele é utilizado para validações, efeitos visuais e interações em tempo real, enriquecendo a experiência dos consumidores ao navegar pelas feiras e bancas cadastradas.
 * Laravel: O Laravel é o framework PHP escolhido para o back-end, estruturado no padrão MVC. Ele oferece ferramentas robustas, como autenticação, ORM Eloquent, migrations e sistema de rotas, garantindo segurança, escalabilidade e facilidade na manutenção do projeto. Essa escolha contribui diretamente para a confiabilidade da aplicação como canal oficial de divulgação dos eventos.
 * MySQL: O MySQL é o banco de dados relacional utilizado para o armazenamento das informações de usuários, eventos e produtos. Sua integração nativa com o Laravel, aliada à confiabilidade e desempenho, torna-o adequado para garantir consistência e eficiência no gerenciamento dos dados do sistema.
 * GitHub para Versionamento: O GitHub foi utilizado para versionamento do código-fonte, possibilitando colaboração, rastreamento de alterações e adoção de boas práticas de desenvolvimento. Essa ferramenta é essencial para manter organização e transparência ao longo da evolução do sistema.
+  
 Para a disponibilização da plataforma online, foi utilizada a hospedagem da HostGator para o registro do domínio do site. O domínio originalmente desejado, baitafeira, já se encontrava em uso, sendo necessária a escolha de uma variação disponível para viabilizar a publicação do projeto na internet.
-* Hostinger para Hospedagem: A aplicação será hospedada na Hostinger, que oferece suporte completo para PHP/Laravel e bancos de dados MySQL. Essa escolha garante um ambiente moderno, rápido e com excelente custo-benefício, atendendo às necessidades do Baita Feira com estabilidade e desempenho.
+Hostinger para Hospedagem: A aplicação será hospedada na Hostinger, que oferece suporte completo para PHP/Laravel e bancos de dados MySQL. Essa escolha garante um ambiente moderno, rápido e com excelente custo-benefício, atendendo às necessidades do Baita Feira com estabilidade e desempenho.
+
 Além das tecnologias mencionadas, a plataforma integra APIs externas, como o ViaCEP, utilizada para a obtenção automática de dados de endereço a partir do CEP informado, e a API do WhatsApp (Twilio), empregada para a automação do envio de mensagens de divulgação de eventos organizados pelo organizador, promoções e notificações aos usuários clientes. Essas integrações facilitam o cadastro de eventos, ampliam a divulgação e aprimoram a comunicação entre organizadores, expositores e clientes.
-
 Além das tecnologias principais utilizadas na plataforma, o Baita Feira integra diversas APIs externas para automatizar processos e aprimorar a experiência dos usuários. A API ViaCEP é utilizada para o preenchimento automático dos dados de endereço durante o cadastro dos eventos. Ao informar o CEP no formulário, o sistema realiza uma requisição à API, que retorna os dados em formato JSON, como rua, bairro, cidade e estado, preenchendo os campos automaticamente na interface sem a necessidade de recarregar a página, reduzindo erros de digitação e agilizando o cadastro.
+Além das tecnologias principais utilizadas na plataforma, o Baita Feira integra diversas APIs externas com o objetivo de automatizar processos e aprimorar a experiência dos usuários. A API ViaCEP é utilizada para o preenchimento automático dos dados de endereço durante o cadastro dos eventos. Ao informar o CEP no formulário, o sistema realiza uma requisição à API, que retorna os dados em formato JSON, como rua, bairro, cidade e estado, preenchendo os campos automaticamente na interface sem a necessidade de recarregar a página, reduzindo erros de digitação e agilizando o processo de cadastro.
+Após a confirmação, os dados são armazenados pelo backend desenvolvido em Laravel (PHP) no banco de dados MySQL. Para viabilizar a exibição de mapas, o sistema utiliza a biblioteca Leaflet integrada ao OpenStreetMap, serviço cartográfico gratuito que não exige chave de API. O endereço cadastrado é convertido em coordenadas geográficas (latitude e longitude) por meio da API Nominatim, processo executado pelo serviço interno GeoLocalizacaoService, responsável por enviar a requisição, receber os dados em formato JSON e gravar as coordenadas no banco de dados associadas ao evento. Essas coordenadas permitem que os locais sejam exibidos corretamente no mapa com marcadores interativos.
+Além disso, o sistema utiliza a API de Geolocalização do navegador para obter a posição do usuário e aplica a fórmula de Haversine diretamente nas consultas SQL para calcular a distância entre o usuário e cada evento, considerando a curvatura da Terra. Com esse cálculo, os eventos são ordenados automaticamente por proximidade, permitindo que o usuário visualize inicialmente as feiras mais próximas de sua localização.
+No planejamento inicial do projeto, também foi considerada a integração com a API do WhatsApp (Twilio) para envio automático de notificações, divulgações e promoções aos usuários. Entretanto, devido às limitações relacionadas a custos e à dependência de serviços pagos, essa funcionalidade não foi implementada na versão final do sistema, permanecendo como uma possibilidade de desenvolvimento futuro.
 
-Após a confirmação, os dados são armazenados pelo backend desenvolvido em Laravel (PHP) no banco de dados MySQL. Para viabilizar a exibição de mapas, o sistema utiliza a biblioteca Leaflet integrada ao OpenStreetMap, serviço cartográfico gratuito que não exige chave de API. O endereço cadastrado é convertido em coordenadas geográficas (latitude e longitude) por meio da API Nominatim, processo executado pelo serviço interno GeoLocalizacaoService, que envia a requisição, recebe os dados em formato JSON e grava as coordenadas no banco de dados associadas ao evento. Essas coordenadas permitem que os locais sejam exibidos corretamente no mapa com marcadores interativos. Além disso, o sistema utiliza a API de Geolocalização do navegador para obter a posição do usuário e aplica a fórmula de Haversine diretamente nas consultas SQL para calcular a distância entre o usuário e cada evento considerando a curvatura da Terra. Com esse cálculo, os eventos são ordenados automaticamente por proximidade, possibilitando que o usuário visualize primeiro as feiras mais próximas de sua localização.
-
-A plataforma também integra a API do WhatsApp (Twilio) para automatizar o envio de notificações, promoções e divulgações de eventos aos usuários, fortalecendo a comunicação entre organizadores, expositores e clientes.
 
 Tecnologia utilizadas no Baita Feira, abaixo:
 
