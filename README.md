@@ -2,7 +2,6 @@
 
 _Jordana Scher e Sofia Pedroso_
 
--
 Este artigo tem como objetivo analisar e documentar a criação de uma aplicação web para divulgar feiras em Porto Alegre.Essa aplicação foi desenvolvida como projeto final na unidade curricular Projeto de Desenvolvimento II pelas alunas Jordana Scher e Sofia Cotta do curso de Análise e Desenvolvimento de Sistemas do Centro Universitário Senac-RS.
 
 ## Resumo do Projeto
