@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="{{ asset('assets/app.css') }}">
         <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
     </head>
-    <body class="antialiased">
+    <body class="antialiased d-flex flex-column min-vh-100">
         <header>
             @if (request()->route()->getName() <> 'login')
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -81,7 +81,7 @@
             </section>
         @endif
 
-        <div class="container" id="main-container">
+        <div class="container flex-fill" id="main-container">
             <main>
                 @if(session('success'))
                     <div class="alert alert-success">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Categoria;
 use App\Models\Enum\TipoNotificacao;
 use App\Models\Participacao;
+use Carbon\Carbon;
 use Exception;
 
 class ParticipacaoController extends Controller
@@ -35,6 +36,13 @@ class ParticipacaoController extends Controller
             ]);
 
             return redirect()->route('eventos.show', $evento->slug)->with('success', 'Participação confirmada com sucesso!');
+        }
+
+        $inicio = Carbon::parse($evento->getRawOriginal('inicio'));
+        if (Carbon::parse($inicio)->isSameDay(Carbon::today())) {
+            return redirect()
+                ->route('eventos.show', $evento->slug)
+                ->with('error', 'Você só pode confirmar participação em até 1 dia útil.');
         }
 
         $bancas = $this->crudService->getBancasUsuario(session('user_id'));

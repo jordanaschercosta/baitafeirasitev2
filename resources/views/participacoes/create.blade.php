@@ -12,6 +12,12 @@
     </ol>
 </nav>
 
+<h3># {{ $evento->titulo }}</h3>
+<p>{{ $evento->descricao }}</p>
+
+<h4>Início</h4>
+<p>{{ $evento->inicio }}</p>
+
 <form action="{{ route('participacoes.store') }}" method="POST">
     @csrf
 

@@ -41,10 +41,10 @@
     @else
         @if (session('user_id'))
             @if (empty($participacao))
-                <a href="{{ route('participacoes.create', ['evento' => $evento->id]) }}" class="float-end btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Quero Participar</a>
+                <a href="{{ route('participacoes.create', ['evento' => $evento->id]) }}" class="float-end btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Quero Participar</a>
             @else
                 @if(isUserExpositor())
-                    <a href="{{ route('participacoes.edit', $participacao->id ) }}" class="float-end btn btn-primary">Ver participação</a>
+                    <a href="{{ route('participacoes.edit', $participacao->id ) }}" class="float-end btn btn-primary"><i class="fas fa-ticket me-1"></i> Ver participação</a>
                 @else
                     <form action="{{ route('participacoes.destroy', $participacao->id) }}" 
                         method="POST"
@@ -60,9 +60,14 @@
                 @endif            
             @endif
         @else
-            <a href="{{ route('participacoes.create', ['evento' => $evento->id, 'redirect' => url()->current() ]) }}" class="float-end btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Quero Participar</a>
+            <a href="{{ route('participacoes.create', ['evento' => $evento->id, 'redirect' => url()->current() ]) }}" class="float-end btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Quero Participar</a>
         @endif
     @endif
+    <a href="https://wa.me/?text={{ urlencode("Venha comparecer na feira {$evento->titulo} em {$evento->inicio}. Mais informações em " . url()->current()) }}"
+        target="_blank"
+        class="float-end btn btn-light">
+        <i class="fa-brands fa-whatsapp me-1"></i> Compartilhar Evento
+    </a>
 @else
     <span class="float-end text-danger fw-bold">
         <i class="fa-solid fa-calendar-xmark"></i>
@@ -98,7 +103,7 @@
 <br>
 
 <h4 class="title-center">Localização</h4>
-<p>{{ $evento->endereco }}</p>
+<p><i class="fas fa-location-dot me-2"></i> {{ $evento->endereco }}</p>
 
 <div id="map"></div>
 

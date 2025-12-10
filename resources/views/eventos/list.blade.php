@@ -73,14 +73,32 @@
                         {{ $evento->inicio }}
                     @endif
 
-                    @if($emAndamento && $evento->status != StatusEvento::CANCELADO)
-                        <span class="badge bg-success ms-2 d-inline-flex align-items-center gap-1">
-                            <span class="pulse-dot"></span>
-                            Acontecendo agora
-                        </span>
-                    @endif
+                    @php
+                        $confirmado = false;
+
+                        if (session('user_id')) {
+                            foreach ($evento->participacoes as $participacao) {
+                                if ($participacao->usuario->id === session('user_id')) {
+                                    $confirmado = true;
+                                }
+                            }
+                        }
+
+                    @endphp
+
+                        @if($emAndamento && $evento->status != StatusEvento::CANCELADO)
+                            <span class="badge bg-success ms-2 d-inline-flex align-items-center gap-1">
+                                <span class="pulse-dot"></span>
+                                Acontecendo agora
+                            </span>
+                        @elseif ($confirmado)
+                            <span class="badge bg-primary ms-2 d-inline-flex align-items-center gap-1">
+                                <i class="fas fa-calendar-check"></i>
+                                Você confirmou presença
+                            </span>
+                        @endif
                 </p>
-                
+
                 <p>
                     <i class="fas fa-map-marker-alt"></i> {{ $evento->endereco }}
                 </p>
