@@ -18,7 +18,6 @@ Os resultados indicaram que muitos frequentadores têm dificuldade em descobrir 
 Atualmente, não existe um aplicativo ou plataforma que centralize as informações sobre as feiras de microempreendedores locais, o que dificulta a divulgação dos eventos e o acesso do público interessado a esses dados, sem garantir que haja aumento de público, mas evidenciando a necessidade de uma solução que organize e concentre essas informações.
 A seguir, são apresentadas as imagens referentes aos resultados obtidos na pesquisa realizada com microempreendedores e frequentadores das feiras, as quais contribuíram para a identificação das principais dificuldades e necessidades do público envolvido.
 
-Press enter or click to view image in full size
 
 ## Objetivo Geral
 Foi desenvolvida uma aplicação web responsiva que centraliza a divulgação de feiras , permitindo que organizadores publiquem seus eventos, expositores promovam seus negócios e consumidores tenham acesso a informações claras sobre quando e onde as feiras ocorrerão.
