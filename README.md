@@ -155,6 +155,21 @@ Nenhuma mostra claramente os expositores confirmados para cada evento, limitando
   
 ![Texto alternativo](./resources/imagens/diagramadecasodeuso.jpg)
 
+* Elevator pitch: 
+PARA microempreendedores que participam de feiras, organizadores de eventos e consumidores interessados em novidades locais,
+
+QUE TÊM empreendedores que precisam de mais visibilidade, organizadores que desejam divulgar feiras de forma centralizada e consumidores que buscam um único lugar para descobrir eventos e promoções,
+
+O BAITA FEIRA
+
+É UMA plataforma digital para divulgação de eventos e bancas de microempreendedores em feiras do sul do Brasil,
+
+QUE facilita a conexão entre expositores, organizadores e consumidores, além de simplificar a divulgação dos eventos e o acesso às informações de cada banca,
+
+AO CONTRÁRIO DE sites da Prefeitura, Sympla, redes sociais e plataformas genéricas, que não são voltadas exclusivamente para pequenos negócios locais e não concentram todos os participantes de feiras em um único ambiente,
+
+O NOSSO PRODUTO é uma plataforma online que centraliza eventos, bancas e dados dos expositores, servindo como ponto inicial para a descoberta, divulgação e acompanhamento das feiras.
+
 ## Protótipos
 ## Funcionalidades para Clientes
 Nos protótipos voltados aos consumidores, foram destacadas funcionalidades que aumentam a praticidade no uso da plataforma e facilitam o engajamento com os expositores:
