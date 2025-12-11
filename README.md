@@ -156,6 +156,8 @@ Nenhuma mostra claramente os expositores confirmados para cada evento, limitando
 ![Texto alternativo](./resources/imagens/diagramadecasodeuso.jpg)
 
 * Elevator pitch: 
+## Elevador Pitch:
+
 PARA microempreendedores que participam de feiras, organizadores de eventos e consumidores interessados em novidades locais,
 
 QUE TÊM empreendedores que precisam de mais visibilidade, organizadores que desejam divulgar feiras de forma centralizada e consumidores que buscam um único lugar para descobrir eventos e promoções,
