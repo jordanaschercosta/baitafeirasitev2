@@ -92,7 +92,7 @@ Diagrama de Fluxo Arquitetural, abaixo:
 O Baita Feira consiste em uma plataforma web desenvolvida em Laravel (PHP), com interface responsiva construída em HTML, CSS, Bootstrap e JavaScript, utilizando MySQL como banco de dados e hospedagem na Hostinguer.
 Para os recursos de localização, o sistema utiliza o Leaflet integrado ao OpenStreetMap (OSM), permitindo exibir mapas e marcar o local dos eventos de forma totalmente gratuita. A latitude e longitude são processadas pelo próprio Leaflet, enquanto o preenchimento automático do endereço do organizador é obtido por meio da API gratuita ViaCEP, que retorna informações completas a partir do CEP informado.
 Além disso, o sistema conta com ferramentas internas para organização de eventos, gerenciamento de bancas, controle de participantes e divulgação das feiras, tornando o processo mais ágil e acessível para organizadores, expositores e consumidores. A plataforma tem como finalidade centralizar informações sobre feiras , conectando microempreendedores e o público interessado em novidades locais.
-![Texto alternativo](./resources/imagens/diagramadefluxo.jpg)
+
 
 ## Para Expositores
 A plataforma disponibiliza recursos para que os expositores possam:
@@ -149,7 +149,7 @@ A plataforma permite aos consumidores:
 
 * Confirmar interesse em feiras e receber notificações por e-mail e WhatsApp, incluindo divulgação de novos eventos, promoções e atualizações importante;
 
-
+![Texto alternativo](./resources/imagens/diagramadefluxo.jpg)
 
 ## Arquitetura
 
@@ -166,7 +166,7 @@ Camada de Modelo (Model— Banco de Dados): representa dados e regras de negóci
 
 Essa arquitetura permite que o Baita Feira seja uma plataforma dinâmica e adaptável, facilitando o desenvolvimento contínuo e a integração de novas funcionalidades.
 
-<!-- ![Texto alternativo](./resources/imagens/ -->
+![Texto alternativo](./resources/imagens/arquitetura.jpg)
 
 Devem ser realizados no mínimo 5 artefatos.
 
@@ -245,7 +245,7 @@ A partir das respostas coletadas, foram identificadas sugestões de melhorias qu
 Após a apresentação e demonstração do Baita Feira App em funcionamento na versão on-line da plataforma, foram aplicadas pesquisas com os dois principais públicos envolvidos no sistema: frequentadores das feiras e expositores. Os resultados indicaram alta aceitação da proposta, demonstrando que a plataforma atende às necessidades de ambos os perfis. Entre os frequentadores, destacaram-se o interesse em utilizar o aplicativo para acompanhar informações completas sobre eventos, como data, horário e localização, além de conhecer bancas e produtos, favoritar expositores e receber notificações. Já entre os expositores, o aplicativo foi reconhecido como uma ferramenta eficiente para a divulgação de eventos e produtos, ampliando a visibilidade das bancas e facilitando a aproximação com o público consumidor.
 
 A partir das respostas coletadas, foram identificadas sugestões de melhorias que refletem expectativas comuns aos dois públicos. Entre elas, destaca-se a implantação de um sistema de reserva de produtos, permitindo que os clientes garantam antecipadamente a aquisição dos itens para retirada no dia da feira. Também foi sugerido o desenvolvimento de um canal de comunicação direta (chat) entre expositores e consumidores, facilitando o atendimento e o esclarecimento de dúvidas em tempo real. Outras propostas incluem a ampliação dos meios de notificação, como e-mail e SMS, além do WhatsApp já utilizado, a implementação de um sistema de curtidas e avaliações públicas para bancas e produtos, o destaque visual para os produtos mais favoritado pelos usúarios,bem como a possibilidade de compartilhamento de imagens e experiências dos clientes com produtos adquiridos nas feiras. De modo geral, as pesquisas confirmam que o Baita Feira App cumpre seu objetivo de centralizar informações, conectar expositores e consumidores e contribuir para o fortalecimento do comércio local, além de fornecer diretrizes claras para a evolução contínua da plataforma de acordo com as demandas identificadas.
-
+![Texto alternativo](./resources/imagens/entrevista%20final.jpg)
 
 
 ## Referências Bibliográficas
