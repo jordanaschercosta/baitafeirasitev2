@@ -28,4 +28,14 @@ class Participacao extends Model
     {
         return $this->belongsTo(Evento::class, 'evento_id', 'id');
     }
+
+    public function bancas()
+    {
+        return $this->belongsToMany(
+            Banca::class,
+            'participacao_banca',
+            'participacao_id',
+            'banca_id'
+        );    
+    }
 }

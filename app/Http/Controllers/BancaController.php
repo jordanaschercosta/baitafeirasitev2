@@ -70,21 +70,14 @@ class BancaController extends Controller
                 ->first();
         }
 
-        // $produtos_favoritos = $this->crudService
-        //     ->getProdutosFavoritosUsuario()
-        //     ->map(fn ($favorito) => $favorito->produto_id)
-        //     ->toArray();
-
         $evento = null;
         if (request()->has('evento')) {
             $evento = Evento::find(request()->evento);
         }
 
-        $bancas = $this->crudService->getBancasUsuario($banca->user->id, $banca->id);
+        $bancasRelacionadas = $this->crudService->getBancasUsuario($banca->user->id, $banca->id);
 
-        $eventos = $this->crudService->getParticipacoesEventosByBanca($banca->id);
-
-        return view('bancas.show', compact('banca', 'bancas', 'evento', 'eventos', 'favorito'));
+        return view('bancas.show', compact('banca', 'bancasRelacionadas', 'evento', 'favorito'));
     }
 
    /**
@@ -132,12 +125,6 @@ class BancaController extends Controller
      */
     public function destroy(Banca $banca)
     {
-        $existeEvento = $this->crudService->getParticipacoesEventosByBanca($banca->id);
-
-        if($existeEvento && $existeEvento->count() > 0) {
-            return redirect()->route('bancas.index')->with('error', 'Banca não pode ser deletada! Participação confirmada em evento(s)');
-        }
-
         $banca->delete();
 
         return redirect()->route('bancas.index')->with('success', 'Banca excluída com sucesso!');

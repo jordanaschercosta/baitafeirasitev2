@@ -168,13 +168,14 @@
 
 <br>
 <h4 class="title-center">Próximos Eventos</h4>
-@include("eventos.list", ['proximosEventos' => $eventos, "paginacao" => false])
+
+@include("eventos.list", ['proximosEventos' => $banca->eventos, "paginacao" => false])
 
 {{-- BANCAS EXPOSITOR --}}
-@if(!$bancas->isEmpty())
+@if(!$bancasRelacionadas->isEmpty())
     <h4 class="title-center mb-3">Bancas deste expositor</h4>
 
-    @include('bancas._list', ['bancas' => $bancas])    
+    @include('bancas._list', ['bancas' => $bancasRelacionadas])    
 @endif
 
 @endsection

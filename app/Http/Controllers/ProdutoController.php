@@ -98,7 +98,7 @@ class ProdutoController extends Controller
             }
         }
 
-        $this->crudService->atualizarProduto($produto->id, [
+        $produto = $this->crudService->atualizarProduto($produto->id, [
             'nome'          => $request->nome,
             'imagem_url'    => $imagem_url,
             'descricao'     => $request->descricao,
@@ -108,7 +108,13 @@ class ProdutoController extends Controller
         ]);
 
         if ($request->em_promocao) {
-            $this->notificacaoService->enviarNotificacao($produto, TipoNotificacao::PRODUTO_PROMOCAO);
+            $this->notificacaoService->enviarNotificacao(
+                null,
+                TipoNotificacao::PRODUTO_PROMOCAO,
+                null,
+                $produto,
+                $produto->banca
+            );
         }
 
         return redirect()

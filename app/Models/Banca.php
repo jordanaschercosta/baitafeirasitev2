@@ -21,6 +21,17 @@ class Banca extends Model
         'categoria_id',
     ];
 
+    public function getEventosAttribute()
+    {
+        $eventos = [];
+
+        foreach ($this->participacoes as $participacao) {
+            $eventos[] = $participacao->participacao->evento;
+        }
+
+        return collect($eventos)->unique('id')->values();
+    }
+
     public function produtos()
     {
         return $this->hasMany(Produto::class);
@@ -29,6 +40,11 @@ class Banca extends Model
     public function favoritos()
     {
         return $this->hasMany(Favorito::class);
+    }
+
+    public function participacoes()
+    {
+        return $this->hasMany(ParticipacaoBanca::class);
     }
 
     public function categoria()

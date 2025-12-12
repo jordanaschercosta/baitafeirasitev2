@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Categoria;
 use App\Models\Enum\TipoNotificacao;
 use App\Models\Participacao;
+use App\Models\ParticipacaoBanca;
 use Carbon\Carbon;
 use Exception;
 
@@ -89,11 +90,12 @@ class ParticipacaoController extends Controller
 
         $participacao = $this->crudService->createParticipacaoEvento([
             'evento_id' => $request->evento_id,
-            'user_id' => session('user_id'),
-            'bancas' => json_encode($request->banca_id)
+            'user_id' => session('user_id')
         ]);
 
-        $this->notificacaoService->enviarNotificacao($participacao, TipoNotificacao::FAVORITO_EVENTO);
+        $this->vincularBancas($participacao->id, $request->banca_id);
+        
+        $this->notificaBancaFavoritado($participacao->id);
 
         return redirect()->route('eventos.index')->with('success', 'Participação confirmada com sucesso!');
     }
@@ -114,12 +116,40 @@ class ParticipacaoController extends Controller
             'banca_id.min' => 'Por favor, selecione pelo menos uma banca.',
             'banca_id.*.exists' => 'Banca inválida selecionada.',
         ]);
-        
-        $this->crudService->atualizarParticipacao($id, [
-            'bancas' => json_encode($request->banca_id)
-        ]);
- 
+
+        $this->vincularBancas($id, $request->banca_id);
+
+        $this->notificaBancaFavoritado($id);
+
         return redirect()->route('participacoes.edit', $id)->with('success', 'Participação atualizada com sucesso!');
+    }
+
+    protected function vincularBancas(int $id, array $bancasIds)
+    {
+        ParticipacaoBanca::where('participacao_id', $id)->delete();
+        foreach ($bancasIds as $bancaId) {
+            ParticipacaoBanca::create([
+                'participacao_id' => $id,
+                'banca_id' => $bancaId,
+            ]);
+        }
+    }
+
+    protected function notificaBancaFavoritado($id)
+    {
+        $participacao = $this->crudService->getParticipacaoById($id);
+
+        $bancas = $participacao->bancas;
+
+        foreach ($bancas as $banca) {
+            $this->notificacaoService->enviarNotificacao(
+                $participacao->evento, 
+                TipoNotificacao::FAVORITO_EVENTO, 
+                $participacao,
+                null,
+                $banca
+            );
+        }
     }
 
     /**

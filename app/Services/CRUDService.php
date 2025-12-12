@@ -49,7 +49,7 @@ class CRUDService
             'valor_novo'    => $data['valor_novo']
         ]);
 
-        return $produto->id;
+        return $produto;
     }
 
     public function deleteProduto($id)
@@ -71,16 +71,6 @@ class CRUDService
             })
             ->get();
     }
-
-    public function getParticipacoesEventosByBanca(int $banca_id)
-    {
-        return Models\Participacao::whereJsonContains('bancas', (string) $banca_id)
-            ->with('evento')
-            ->get()
-            ->pluck('evento')
-            ->filter(); // Remove possíveis nulls
-    }
-
 
     public function getBancaById(int $id) 
     {
@@ -298,67 +288,98 @@ class CRUDService
             return false;
         }
 
-        Models\Participacao::where('evento_id', $evento->id)->delete();
-
         $evento->status = StatusEvento::CANCELADO;
         $evento->save();
     }
     
-    public function createNotificacao(string $tipo, $object, Models\User $destinario) 
+    public function createNotificacao(
+        $destinario, 
+        $tipo, 
+        $evento, 
+        $participacao,
+        $produto,
+        $banca
+    ) 
     {
-        $titulo = "";
-        $mensagem = "";
-
-        if (!empty($object['favorito']->banca)) {
-            $banca = $object['favorito']->banca;
-        }
-
-        if (!empty($object['participacao']->evento)) {
-            $object = $object['participacao']->evento;
-        }
-
-        if ($object->slug) {
-            $url = route('eventos.show', $object->slug);
-        }
-
-        if ($tipo == TipoNotificacao::EVENTO) {
-            $titulo = "Novo Evento confirmado!";
-            $mensagem = $object->descricao;
-        } else if ($tipo == TipoNotificacao::EVENTO_REAGENDADO) {
-            $titulo = "Alteração na data do evento.";
-            $mensagem = "O evento {$object->titulo} teve sua data de início alterada";
-        } else if ($tipo == TipoNotificacao::EVENTO_CANCELADO) {
-            $titulo = "Cancelamento de evento.";
-            $mensagem = "O evento {$object->titulo} foi cancelado pelo organizador.";
-        } else if ($tipo == TipoNotificacao::EVENTO_LEMBRETE) {
-            $titulo = "Você tem evento hoje!";
-            $mensagem = "O evento {$object->titulo} será dia {$object->inicio}";
-        } else if ($tipo == TipoNotificacao::FAVORITO_EVENTO) {            
-            $titulo = "Participação de Banca Favorita!";
-            $mensagem = "Sua banca favorita {$banca->nome_fantasia} confirmou presença no evento:\n"
-                . "{$object->titulo}\n"
-                . "em {$object->inicio}.\n\n"
-                . "Confirme sua presença e apoie o comércio local.";
-        } else if ($tipo == TipoNotificacao::PRODUTO_PROMOCAO) {
-            $titulo = "Seu produto favorito entrou em promoção!";
-            $mensagem = "Um de seus produtos favoritos, <b>{$object->nome}</b> entrou em promoção!";
-
-            $url = route('bancas.show', $object->banca->slug);
-        }
-
         $dataSave = [
             'user_id' => $destinario->id,
-            'titulo' => $titulo,
-            'mensagem' => $mensagem,
-            'url' => $url,
+            'titulo' => $this->getNotificacaoTitulo($tipo),
+            'mensagem' => $this->getNotificacaoMensagem($tipo, $evento, $participacao, $produto, $banca),
+            'url' => $this->getNotificacaoUrl($evento, $banca),
             'tipo' => $tipo
         ];
 
-        if ($object instanceof Evento) {
-            $dataSave['evento_id'] = $object->id;
+        if ($evento) {
+            $dataSave['evento_id'] = $evento->id;
+        }
+        
+        if ($banca) {
+            $dataSave['banca_id'] = $banca->id;
         }
 
         return Models\Notificacao::create($dataSave);
+    }
+
+    protected function getNotificacaoTitulo(string $tipo)
+    {
+        switch ($tipo) {
+            case TipoNotificacao::EVENTO_REAGENDADO:
+                return "Alteração na data do evento.";
+                break;
+
+            case TipoNotificacao::EVENTO_CANCELADO:
+                return "Cancelamento de evento";
+                break;
+
+            case TipoNotificacao::FAVORITO_EVENTO:
+                return "Participação de Banca Favorita!";
+                break;
+
+            case TipoNotificacao::PRODUTO_PROMOCAO:
+                return "Seu produto favorito entrou em promoção!";
+                break;
+        }
+    }
+
+    protected function getNotificacaoUrl(
+        $evento = null, 
+        $banca = null
+    ) {
+        if ($banca) {
+            return route('bancas.show', $banca->slug);
+        }
+
+        return route('eventos.show', $evento->slug);
+    }
+
+    protected function getNotificacaoMensagem(
+        string $tipo, 
+        $evento = null, 
+        $participacao = null, 
+        $produto = null, 
+        $banca = null
+    )
+    {
+        switch ($tipo) {
+            case TipoNotificacao::EVENTO_REAGENDADO:
+                return "O evento {$evento->titulo} teve sua data de início alterada";
+                break;
+
+            case TipoNotificacao::EVENTO_CANCELADO:
+                return "O evento {$evento->titulo} foi cancelado pelo organizador.";
+                break;
+
+            case TipoNotificacao::FAVORITO_EVENTO:
+                return "Sua banca favorita {$banca->nome_fantasia} confirmou presença no evento:\n"
+                . "{$evento->titulo}\n"
+                . "em {$evento->inicio}.\n\n"
+                . "Confirme sua presença e apoie o comércio local.";
+                break;
+
+            case TipoNotificacao::PRODUTO_PROMOCAO:
+                return "Um de seus produtos favoritos, <b>{$produto->nome}</b> entrou em promoção!";
+                break;
+        }
     }
 
     public function getNotificacoes($naoLidas = false)

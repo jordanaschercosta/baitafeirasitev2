@@ -85,8 +85,6 @@ class EventoController extends Controller
             }
         }
 
-        // $this->crudService->createNotificacao(TipoNotificacao::EVENTO, $evento);
-
         return redirect()->route('eventos.index')->with('success', 'Evento criado com sucesso!');
     }
 
@@ -97,34 +95,12 @@ class EventoController extends Controller
     {
         $evento = $this->crudService->getEventoBySlug($slug);
 
-        $bancasIds = [];
-
-        foreach ($evento->participacoes as $participacao) {
-            if (empty($participacao->bancas)) {
-                continue;
-            }
-            $bancas = json_decode($participacao->bancas);
-            foreach ($bancas as $banca) {
-                $bancasIds[] = $banca;
-            }
-        }
-
-        $bancasIds = array_values(array_unique($bancasIds));
-
-        $listaBancas = [];
-        foreach ($bancasIds as $bancaId) {
-            $banca = $this->crudService->getBancaById($bancaId);
-            if (!empty($banca)) {
-                $listaBancas[] = $this->crudService->getBancaById($bancaId);
-            }
-        }
-
         $participacao = null;
         if (!empty(session('user_id'))) {
             $participacao = $this->crudService->getParticipacaoUsuarioEvento(session('user_id'), $evento->id);            
         }
 
-        return view('eventos.show', compact('evento', 'listaBancas', 'participacao'));
+        return view('eventos.show', compact('evento', 'participacao'));
     }
 
     /**
@@ -207,7 +183,13 @@ class EventoController extends Controller
 
         if ($reagendado) {
             $evento = $this->crudService->getEventoById($evento->id);
-            $this->notificacaoService->enviarNotificacao($evento, TipoNotificacao::EVENTO_REAGENDADO);
+            $this->notificacaoService->enviarNotificacao(
+                $evento, 
+                TipoNotificacao::EVENTO_REAGENDADO, 
+                null,
+                null,
+                null
+            );
         }
 
         return redirect()
@@ -226,7 +208,13 @@ class EventoController extends Controller
         $evento->status = StatusEvento::CONFIRMADO;
         $evento->save();
 
-        $this->notificacaoService->enviarNotificacao($evento, TipoNotificacao::EVENTO_REAGENDADO);
+        $this->notificacaoService->enviarNotificacao(
+            $evento, 
+            TipoNotificacao::EVENTO_REAGENDADO, 
+            null,
+            null,
+            null
+        );
 
         return redirect()
             ->route('eventos.index')
@@ -251,7 +239,14 @@ class EventoController extends Controller
                 ->with('success', 'Evento excluído com sucesso!');
         }
 
-        $this->notificacaoService->enviarNotificacao($evento, TipoNotificacao::EVENTO_CANCELADO);
+        $this->notificacaoService->enviarNotificacao(
+            $evento, 
+            TipoNotificacao::EVENTO_CANCELADO, 
+            null,
+            null,
+            null
+        );
+
         $this->crudService->cancelaEvento($id);
 
         return redirect()

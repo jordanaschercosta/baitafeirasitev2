@@ -95,8 +95,9 @@
 
 <br>
 <h4 class="title-center">Bancas Participantes</h4>
-@if ($listaBancas)
-    @include('bancas._list', ['bancas' => $listaBancas])
+
+@if ($evento->bancas)
+    @include('bancas._list', ['bancas' => $evento->bancas])
 @else
     <p class="text-sm text-gray-600 text-center">Nenhuma banca confirmou presença neste evento.</p>
 @endif

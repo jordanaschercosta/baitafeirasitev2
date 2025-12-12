@@ -6,6 +6,7 @@ use App\Models;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail as TemplateEmail;
+use App\Models\User;
 use Exception;
 use Throwable;
 
@@ -22,30 +23,15 @@ class EmailService
         }
     }
 
-    public function cancelamentoEvento(Models\User $user, Models\Evento $evento)
+    public function emailNotificacao(
+        User $usuario, 
+        string $tipo, 
+        $evento = null, 
+        $participacao = null, 
+        $produto = null,
+        $banca = null
+    )
     {
-        try {
-            Mail::to($user->email)->send(new TemplateEmail\CancelamentoEventoMail($user->name, $evento));
-        } catch (Exception $exception) {
-           //
-        }
-    }
-
-    public function atualizacaoEvento(Models\User $user, Models\Evento $evento)
-    {
-        try {
-            Mail::to($user->email)->send(new TemplateEmail\AtualizacaoEventoMail($user->name, $evento));
-        } catch (Exception $exception) {
-           //
-        }
-    }
-
-    public function eventoLembrete(Models\User $user, Models\Evento $evento)
-    {
-        try {
-            Mail::to($user->email)->send(new TemplateEmail\LembreteEventoMail($user->name, $evento));
-        } catch (Exception $exception) {
-            //
-        }
+        Mail::to($usuario->email)->send(new TemplateEmail\NotificacaoMail($usuario->name, $tipo, $evento, $participacao, $produto, $banca));
     }
 }

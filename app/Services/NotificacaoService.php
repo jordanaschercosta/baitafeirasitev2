@@ -3,8 +3,12 @@
 namespace App\Services;
 
 use App\Models;
+use App\Models\Banca;
 use App\Models\Enum\StatusEvento;
 use App\Models\Enum\TipoNotificacao;
+use App\Models\Evento;
+use App\Models\Participacao;
+use App\Models\Produto;
 use Exception;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -21,72 +25,64 @@ class NotificacaoService
         $this->emailService = $emailService;
     }
 
-    public function enviarNotificacao($obj, string $tipo)
+    public function enviarNotificacao(
+        ?Evento $evento = null,
+        string $tipo,
+        ?Participacao $participacao = null,
+        ?Produto $produto = null,
+        ?Banca $banca = null
+    )
     {
-        $destinatarios = $this->getListaTransmissao($obj);
-        
-        /** @var \App\Models\User[] $destinatarios */
+        $destinatarios = $this->getListaTransmissao($evento, $tipo, $participacao, $produto, $banca);
+
+        // dd('enviar notificacao', reset($destinatarios)->email, $produto->id);
+
         foreach ($destinatarios as $destinario) {
-
-            if ($destinario instanceof \App\Models\Favorito) {
-
-                $obj = [
-                    'favorito' => $destinario,
-                    'participacao' => $obj
-                ];
-
-                $destinario = $destinario->user;
-            }
-
             try {
-                echo $destinario->email;
-                echo "\n";
-                $this->crudService->createNotificacao($tipo, $obj, $destinario);
-                if ($tipo == TipoNotificacao::EVENTO_CANCELADO) {
-                    $this->emailService->cancelamentoEvento($destinario, $obj);
-                } else if ($tipo == TipoNotificacao::EVENTO_REAGENDADO) {
-                    $this->emailService->atualizacaoEvento($destinario, $obj);
-                }
+                $this->crudService->createNotificacao($destinario, $tipo, $evento, $participacao, $produto, $banca);
+                $this->emailService->emailNotificacao($destinario, $tipo, $evento, $participacao, $produto, $banca);
             } catch (Exception $exception) {
                 //
+                dd($exception->getMessage());
             }
         }
     }
-
-    /**
-      * @param mixed $obj
-      * @return array
-    */
-    protected function getListaTransmissao($obj) : array
+ 
+    protected function getListaTransmissao(
+        ?Evento $evento, 
+        string $tipo, 
+        ?Participacao $participacao = null,
+        ?Produto $produto = null,
+        ?Banca $banca = null
+    )
     {
         $users = [];
 
-        if ($obj instanceof Models\Evento) {
-            foreach ($obj->participacoes as $participacao) {
-                $users[] = $participacao->usuario; 
-            }
-        }
+        switch ($tipo) {
+            case TipoNotificacao::PRODUTO_PROMOCAO:
+                // $favoritados = $this->crudService->getFavoritadoByProdutoId($produto->id);
+                foreach($produto->favoritos as $favoritado) {
+                    $users[] = $favoritado->user; 
+                }
 
-        if ($obj instanceof Models\Participacao) {
-            $bancasFavoritados = [];
-            if (!empty($obj->bancas)) {
-                $bancasIds = json_decode($obj->bancas);
-                foreach ($bancasIds as $bancaId) {
-                    $favoritados = $this->crudService->getFavoritadoByBancaId($bancaId);
-                    foreach($favoritados as $favoritado) {
-                        $bancasFavoritados[] = $favoritado;
+                break;
+
+            case TipoNotificacao::FAVORITO_EVENTO:
+
+                foreach ($participacao->bancas as $banca) {
+                    foreach ($banca->favoritos as $favorito) {
+                        $users[] = $favorito->user;
                     }
                 }
 
-                return $bancasFavoritados;
-            }
-        }
+                break;
+            
+            default:
+                foreach ($evento->participacoes as $participacao) {
+                    $users[] = $participacao->usuario; 
+                }
 
-        if ($obj instanceof Models\Produto) {
-            $favoritados = $this->crudService->getFavoritadoByProdutoId($obj->id);
-            foreach($favoritados as $favoritado) {
-                $users[] = $favoritado->user; 
-            }
+                break;
         }
 
         return $users;

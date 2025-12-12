@@ -42,6 +42,20 @@ class Evento extends Model
         return $this->hasMany(Participacao::class, 'evento_id', 'id');
     }
 
+    public function getBancasAttribute()
+    {
+        $bancas = [];
+
+        foreach ($this->participacoes as $participacao) {
+            foreach ($participacao->bancas as $banca) {
+                $bancas[] = $banca;
+            }
+        }
+
+        // Remove duplicadas
+        return collect($bancas)->unique('id')->values();
+    }
+
     /**
      * Retorna o endereço completo do evento.
      */

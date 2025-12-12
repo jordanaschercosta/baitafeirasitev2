@@ -16,9 +16,12 @@
 @endif
 
 @php
-    $bancasSelecionadas = isset($participacao->bancas)
-        ? json_decode($participacao->bancas, true)
-        : [];
+    $bancasSelecionadas = [];
+    if ($participacao) {
+        foreach ($participacao->bancas as $banca) {
+            $bancasSelecionadas[] = $banca->id;
+        }
+    }
 @endphp
 
 @foreach ($bancas as $banca)
