@@ -147,7 +147,6 @@ class EventoController extends Controller
         $request->validate([
             'inicio' => 'required|date|after_or_equal:today',
             'fim' => 'required|date|after:inicio',
-            'cropped_image' => 'required',
             'cep' => 'required',
             'rua' => 'required',
             'numero' => 'required',
@@ -252,8 +251,8 @@ class EventoController extends Controller
                 ->with('success', 'Evento excluído com sucesso!');
         }
 
-        $this->crudService->cancelaEvento($id);
         $this->notificacaoService->enviarNotificacao($evento, TipoNotificacao::EVENTO_CANCELADO);
+        $this->crudService->cancelaEvento($id);
 
         return redirect()
             ->route('eventos.index')
