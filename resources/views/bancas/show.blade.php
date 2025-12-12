@@ -153,7 +153,7 @@
                                 @csrf
                                 <input type="hidden" name="produto_id" value="{{ $produto->id }}">
                                 <button class="btn btn-light btn-sm w-100">
-                                    <i class="fa-regular fa-heart"></i> Adicionar aos Favoritos {{ $produto->id }}
+                                    <i class="fa-regular fa-heart"></i> Adicionar aos Favoritos
                                 </button>
                             </form>
                         @endif
